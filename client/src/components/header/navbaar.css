@@ -203,3 +203,11 @@ header nav .drawer{
         margin-left: 67px;
     }
 }
+.MuiList-root.extrasearch {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    top: 50px;
+    width: 440px;
+    z-index: 999;
+}

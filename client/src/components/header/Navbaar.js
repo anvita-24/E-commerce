@@ -23,7 +23,7 @@ const Navbaar = () => {
     const [dropen, setDropen] = useState(false);
 
     const { products } = useSelector(state => state.getproductsdata);
-    const { account, setAccount } = useContext(Logincontext);
+    const { account, setAccount, setSearchText } = useContext(Logincontext);
 
     useEffect(() => {
         const getdetailsvaliduser = async () => {
@@ -49,12 +49,15 @@ const Navbaar = () => {
         getdetailsvaliduser();
     }, [setAccount]);
 
-    const handleClick = (event) => {
-        setOpen(event.currentTarget);
-    };
+    const handleClick = (event) => setOpen(event.currentTarget);
+    const handleClose = () => setOpen(null);
+    const handelopen = () => setDropen(true);
+    const handleClosedr = () => setDropen(false);
 
-    const handleClose = () => {
-        setOpen(null);
+    const getText = (value) => {
+        setText(value);
+        setSearchText(value);
+        setLiopen(false);
     };
 
     const logoutuser = async () => {
@@ -78,14 +81,6 @@ const Navbaar = () => {
         }
     };
 
-    const handelopen = () => setDropen(true);
-    const handleClosedr = () => setDropen(false);
-
-    const getText = (text) => {
-        setText(text);
-        setLiopen(false);
-    };
-
     return (
         <header>
             <nav>
@@ -94,9 +89,20 @@ const Navbaar = () => {
                         <MenuIcon style={{ color: "#fff" }} />
                     </IconButton>
 
-                    <Drawer open={dropen} onClose={handleClosedr}>
-                        <Rightheader userlog={logoutuser} logclose={handleClosedr} />
-                    </Drawer>
+                 <Drawer
+                 anchor="left"
+                  open={dropen}
+                    onClose={handleClosedr}
+                  PaperProps={{
+                    sx: {
+                       width: 260,
+                       backgroundColor: "#fff",
+                           zIndex: 2000
+        }
+    }}
+>
+    <Rightheader userlog={logoutuser} logclose={handleClosedr} />
+</Drawer>
 
                     <div className="navlogo">
                         <NavLink to="/">

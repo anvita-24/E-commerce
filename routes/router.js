@@ -89,10 +89,10 @@ router.post("/login", async (req, res) => {
                 const token = await userlogin.generatAuthtoken();
                 console.log(token);
 
-                res.cookie("eccomerce", token, {
-                    expires: new Date(Date.now() + 2589000),
+               res.cookie("eccomerce", token, {
+                   expires: new Date(Date.now() + 2589000000), //  30 days
                     httpOnly: true
-                });
+                        });
                 res.status(201).json(userlogin);
             }
 

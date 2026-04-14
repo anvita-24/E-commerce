@@ -28,7 +28,7 @@ import LogoutIcon from '@mui/icons-material/Logout';const Rightheader = ({ userl
                 }
                 {account ? <h3>Hello, {account.fname.toUpperCase()}</h3> : ""}
             </div>
-            <div className="nav_btn" onClick={()=>logclose()}>
+            <div className="nav_btn" onClick={logclose}>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/">Shop By Category</NavLink>
                 <Divider style={{ width: "100%", marginLeft: -20 }} />
